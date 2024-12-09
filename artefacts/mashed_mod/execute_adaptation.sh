@@ -2,12 +2,12 @@
 
 # Function to display usage information
 usage() {
-    echo "Usage: $0 -m <mitigation> [options]"
+    echo "Usage: $0 -m <adaptation> [options]"
     echo
-    echo "This script runs Scenic experiments with different mitigation strategies and models."
+    echo "This script runs Scenic experiments with different adaptation strategies and models."
     echo
     echo "Options:"
-    echo "  -m <strategy>  Mitigation strategy (behaviour or model)"
+    echo "  -m <strategy>  Adaptation strategy (behaviour or model)"
     echo
     echo "Adaptation-specific options:"
     echo "  Behaviour Adaptation:"
@@ -53,7 +53,7 @@ run_scenic() {
 case "$adaptation" in
     behaviour)
         export YOLO_MODEL="yolov5s"
-        run_scenic "behaviour_mitigation.scenic"
+        run_scenic "behaviour_adaptation.scenic"
         ;;
     model)
         if [ -z "$yolo_model" ]; then
@@ -73,6 +73,9 @@ case "$adaptation" in
             few_shot)
                 export YOLO_MODEL="few_shot"
                 ;;
+            # <your-model-name>)
+            #     export YOLO_MODEL="<your-model-name>"
+            #     ;;
             *)
                 echo "Error: Invalid YOLO model specified."
                 usage
@@ -81,7 +84,7 @@ case "$adaptation" in
         run_scenic "model_architecture_mitigation.scenic"
         ;;
     *)
-        echo "Error: Invalid mitigation strategy or missing required arguments."
+        echo "Error: Invalid adaptation strategy or missing required arguments."
         usage
         ;;
 esac
