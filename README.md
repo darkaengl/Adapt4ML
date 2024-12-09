@@ -1,7 +1,7 @@
-# RE4ML
-Repository with the demonstrators for Requirements Engineering For Machines the Learn (REAL).
+# Adapt4ML
+Repository with the demonstrators for Requirements Engineering For Machines the Learn (Adapt4ML).
 
-# RE4ML Project Documentation
+# Adapt4ML Project Documentation
 
 ## Table of Contents
 - [RE4ML Project Documentation](#re4ml-project-documentation)
@@ -264,10 +264,33 @@ Examples:
 
 6. If you encounter any "file not found" errors, double-check that the Scenic files are in the correct location within the container.
 
-7. You can always use the `-h` option with either script to display the usage information:
+7. You can always use the -h option with either script to display the usage information:
    ```
    ./execute_experiments.sh -h
    ./execute_adaptation.sh -h
    ```
 
 By using these scripts, you can easily run different experiments and adaptation strategies as part of the RE4ML project. The scripts provide a convenient way to set up the correct parameters and environment variables for each scenario.
+
+
+## Notes on adding new Adaptatrions
+
+#### Data / Model related Adaptation
+
+- Train a new model for pedestrian detection ( Either use new data to train the existing YOLO models we used or train a new model )
+
+- Edit the `Adapt4ML/artefacts/mashed_mod/execute_adaptations.sh` file and uncomment the lines from 76 to 78 and replace `<your-model-name>` with the actual model name you wat to try out
+
+- Go to `Adapt4ML/artefacts/mashed_mod/scenic-repo/Scenic/src/scenic/domains/driving/model.scenic` and edit the `get_model()` function and edit the business logic
+
+    - The model name is fetched from the environment variable `YOLO_MOLDEL` (which you have already updated in the )
+
+    - Now add an if condition to add the business logic for loading your model
+
+    - Also edit the `checkPedestrianDectectedFlag` function to include the inference logic of your model using an if condition 
+
+#### Any other behavioural Adaptation
+
+- This requires you define custom functions in the `Adapt4ML/artefacts/mashed_mod/scenic-repo/Scenic/src/scenic/domains/driving/model.scenic` file
+
+- You may refer to `checkCautionBehaviour` function defined in the same file to get a better understanding for defining new behavioural adaptations
