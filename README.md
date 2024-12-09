@@ -60,7 +60,7 @@ Before you begin, ensure you have the following installed on your system:
 6. Install `pygame` and `numpy`
    ```
    $ pip install numpy pygame
-   ```3
+   ```
 
 ## Install CARLA simulator
 1. Go to [documentation](https://carla.readthedocs.io/en/latest/start_quickstart/) for carla simulator and follow package installation instructions
