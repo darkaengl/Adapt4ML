@@ -9,11 +9,11 @@ usage() {
     echo "Options:"
     echo "  -m <strategy>  Mitigation strategy (behaviour or model)"
     echo
-    echo "Mitigation-specific options:"
-    echo "  Behaviour mitigation:"
+    echo "Adaptation-specific options:"
+    echo "  Behaviour Adaptation:"
     echo "    No additional options required"
     echo
-    echo "  Model mitigation:"
+    echo "  Model Adaptation:"
     echo "    -y <type>    YOLOv5 model type (s, m, fine_tune, few_shot)"
     echo
     echo "Examples:"
@@ -24,13 +24,13 @@ usage() {
 }
 
 # Initialize variables
-mitigation=""
+adaptation=""
 yolo_model=""
 
 # Parse command line arguments
 while [ $# -gt 0 ]; do
     case "$1" in
-        -m) mitigation="$2"; shift 2 ;;
+        -m) adaptation="$2"; shift 2 ;;
         -y) yolo_model="$2"; shift 2 ;;
         -h) usage ;;
         *) echo "Unknown option: $1"; usage ;;
@@ -50,7 +50,7 @@ run_scenic() {
 }
 
 # Run scenarios based on user input
-case "$mitigation" in
+case "$adaptation" in
     behaviour)
         export YOLO_MODEL="yolov5s"
         run_scenic "behaviour_mitigation.scenic"

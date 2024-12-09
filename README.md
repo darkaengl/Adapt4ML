@@ -11,12 +11,12 @@ Repository with the demonstrators for Requirements Engineering For Machines the 
   - [System Setup](#system-setup)
   - [Running the Project](#running-the-project)
   - [Running Experiments](#running-experiments)
-  - [Running Mitigation](#running-mitigation)
+  - [Running Adaptations](#running-adaptations)
   - [Notes on Running Scripts](#notes-on-running-scripts)
 
 ## Introduction
 
-This document provides instructions for setting up and running the REAL demonstrator. The project uses Docker to create a controlled environment for running experiments and simulations.
+This document provides instructions for setting up and running the REAL demonstrator. The project creates a controlled environment for running experiments and simulations.
 
 
 The installation video is given below :
@@ -60,7 +60,7 @@ Before you begin, ensure you have the following installed on your system:
 6. Install `pygame` and `numpy`
    ```
    $ pip install numpy pygame
-   ```
+   ```3
 
 ## Install CARLA simulator
 1. Go to [documentation](https://carla.readthedocs.io/en/latest/start_quickstart/) for carla simulator and follow package installation instructions
@@ -223,51 +223,51 @@ Examples:
 ./execute_experiments.sh -e 4 -a child
 ```
 
-## Running Mitigation
+## Running Adaptations
 
-To run mitigation strategies, use the `execute_mitigation.sh` script. This script allows you to run Scenic experiments with different mitigation strategies and models.
+To run adaptation strategies, use the `execute_adaptation.sh` script. This script allows you to run Scenic experiments with different adaptation strategies and models.
 
 Usage:
 ```
-./execute_mitigation.sh -m <mitigation> [options]
+./execute_adaptation.sh -m <adaptation> [options]
 ```
 
 Options:
-- `-m <strategy>`: Mitigation strategy (behaviour or model)
+- `-m <strategy>`: adaptation strategy (behaviour or model)
 
-Mitigation-specific options:
-1. Behaviour mitigation:
+adaptation-specific options:
+1. Behaviour adaptation:
    - No additional options required
 
-2. Model mitigation:
+2. Model adaptation:
    - `-y <type>`: YOLOv5 model type (s, m, fine_tune, few_shot)
 
 Examples:
 ```
-./execute_mitigation.sh -m behaviour
-./execute_mitigation.sh -m model -y m
-./execute_mitigation.sh -m model -y fine_tune
+./execute_adaptation.sh -m behaviour
+./execute_adaptation.sh -m model -y m
+./execute_adaptation.sh -m model -y fine_tune
 ```
 
 ## Notes on Running Scripts
 
 1. Make sure the scripts are executable. If they're not, you can make them executable using:
    ```
-   chmod +x execute_experiments.sh execute_mitigation.sh
+   chmod +x execute_experiments.sh execute_adaptation.sh
    ```
 
 2. The scripts will run Scenic simulations based on the provided parameters. Ensure that all necessary Scenic files are present in the `scenic-repo/demonstrators/` directory .
 
 4. For experiments, the script will automatically set the YOLO_MODEL environment variable based on the parameters you provide.
 
-5. For mitigation, you can choose between behaviour mitigation (which uses YOLOv5s by default) and model mitigation (where you can specify the YOLO model type).
+5. For adaptation, you can choose between behaviour adaptation (which uses YOLOv5s by default) and model adaptation (where you can specify the YOLO model type).
 
 6. If you encounter any "file not found" errors, double-check that the Scenic files are in the correct location within the container.
 
 7. You can always use the `-h` option with either script to display the usage information:
    ```
    ./execute_experiments.sh -h
-   ./execute_mitigation.sh -h
+   ./execute_adaptation.sh -h
    ```
 
-By using these scripts, you can easily run different experiments and mitigation strategies as part of the RE4ML project. The scripts provide a convenient way to set up the correct parameters and environment variables for each scenario.
+By using these scripts, you can easily run different experiments and adaptation strategies as part of the RE4ML project. The scripts provide a convenient way to set up the correct parameters and environment variables for each scenario.

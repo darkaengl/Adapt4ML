@@ -42,17 +42,22 @@ import os
 
 
 # Get the model name from environment variable, default to 'yolov5s' if not set
-model_name = os.environ.get('YOLO_MODEL', 'yolov5s')
+def get_model():
+    model_name = os.environ.get('YOLO_MODEL', 'yolov5s')
 
-# Update the model loading code
-current_dir = os.getcwd()
-model_path = os.path.join(current_dir, "model", f"{model_name}.pt")
-# model_path = os.path.join(current_dir, "model", "best.pt")
+    # Update the model loading code
+    current_dir = os.getcwd()
+    model_path = os.path.join(current_dir, "model", f"{model_name}.pt")
+    print(model_path)
+    # model_path = os.path.join(current_dir, "model", "best.pt")
 
-yolo_model = torch.hub.load("ultralytics/yolov5", "custom", path=model_path, force_reload=True)
+    yolo_model = torch.hub.load("ultralytics/yolov5", "custom", path=model_path, force_reload=True)
+    return yolo_model
+
+yolo_model = get_model()
 
 import warnings
-warnings.filterwarnings("ignore", category=FutureWarning, module="torch.cuda.amp.autocast")
+warnings.filterwarnings("ignore")
 
 from scenic.domains.driving.workspace import DrivingWorkspace
 from scenic.domains.driving.roads import (ManeuverType, Network, Road, Lane, LaneSection,
@@ -404,7 +409,7 @@ def checkCautionBehaviour(observations, pedestrian_position, ego_position):
     df = results.pandas().xyxy[0]
     person_low_con_det = df[(df["class"] == 0) & (df["confidence"] > 0.30)]
     if person_low_con_det.empty:
-        # print(f'zero confidence')
+        print(f'zero confidence')
         return 0
     else:
         confidence_value = person_low_con_det['confidence'].max()
