@@ -273,7 +273,7 @@ Examples:
 By using these scripts, you can easily run different experiments and adaptation strategies as part of the RE4ML project. The scripts provide a convenient way to set up the correct parameters and environment variables for each scenario.
 
 
-## Notes on adding new Adaptatrions
+## Notes on adding new Adaptations
 
 #### Data / Model related Adaptation
 
