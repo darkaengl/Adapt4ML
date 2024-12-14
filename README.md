@@ -1,26 +1,13 @@
 # Adapt4ML
 Repository with the demonstrators for Adaptations For Machines the Learn (Adapt4ML).
 
-# Adapt4ML Project Documentation
-
-## Table of Contents
-  - [Adapt4ML Project Documentation](#Adapt4ML-project-documentation)
-  - [Table of Contents](#table-of-contents)
-  - [Introduction](#introduction)
-  - [Prerequisites](#prerequisites)
-  - [System Setup](#setup-python-environment)
-  - [Running the Project](#running-the-project)
-  - [Running Experiments](#running-experiments)
-  - [Running Adaptations](#running-adaptations)
-  - [Notes on Running Scripts](#notes-on-running-scripts)
-
 ## Introduction
 
 This document provides instructions for setting up and running the Adapt4ML demonstrator. The project creates a virtual environment for running experiments and simulations.
 
 The Demo video is given below :
 
-[Demo Video](https://youtu.be/T52Rwxovyr4)
+[Demo Video](https://streamable.com/g3lhu4)
 
 
 ## Prerequisites
